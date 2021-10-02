@@ -3,8 +3,9 @@ plugins {
     id("maven-publish")
 }
 
+val libraryVersion = "1.2.1"
 group = "com.yesferal.hornsapp.core"
-version = "1.2.0"
+version = libraryVersion
 
 repositories {
     mavenCentral()
@@ -22,6 +23,15 @@ kotlin {
     sourceSets {
         sourceSets["jvmTest"].dependencies {
             implementation("junit:junit:4.13.2")
+        }
+    }
+}
+
+configure<PublishingExtension> {
+    publications {
+        create<MavenPublication>("maven") {
+            artifact(tasks["sourcesJar"])
+            version = libraryVersion
         }
     }
 }
