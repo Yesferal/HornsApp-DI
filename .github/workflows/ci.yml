@@ -30,10 +30,6 @@ jobs:
       - name: Clean
         run: ./gradlew :clean
 
-      # Execute lint validation
-      - name: Lint
-        run: ./gradlew :lintDebug
-
       # Execute unit tests
       - name: Unit Test
         run: ./gradlew :jvmTest
